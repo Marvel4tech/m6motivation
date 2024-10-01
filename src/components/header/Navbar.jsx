@@ -1,10 +1,11 @@
 import { FcIdea } from "react-icons/fc"
 import { Link } from "react-router-dom"
+import { MdMenu } from "react-icons/md"
 
 const Navbar = () => {
 
   return (
-    <header className=" border-b border-b-yellow-500">
+    <header className=" px-4 md:px-5 border-b border-b-yellow-500">
         <nav className=" max-w-6xl mx-auto flex justify-between items-center h-[90px]">
             <div className=" border-b border-b-blue-600">
                 <Link to={'/'}>
@@ -14,7 +15,7 @@ const Navbar = () => {
                     </div>
                 </Link>
             </div>
-            <div className=" flex text-sm font-medium items-center justify-center">
+            <div className=" hidden md:flex text-sm font-medium items-center justify-center">
                 <Link className=" py-9 px-5 hover:bg-slate-200" to={'/create'}>CREATE</Link>
                 <Link className=" py-9 px-5 hover:bg-slate-200" to={'/about'}>ABOUT</Link>
                 <Link className=" py-9 px-5 hover:bg-slate-200" to={'/feedback'}>FEEDBACK</Link>
@@ -23,6 +24,9 @@ const Navbar = () => {
                     SIGN UP
                 </Link>
             </div>
+            <button className=" md:hidden">
+                <MdMenu className=" text-4xl" />
+            </button>
         </nav>
     </header>
   )
