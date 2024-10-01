@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 const Navbar = () => {
 
   return (
-    <header className="">
+    <header className=" border-b border-b-yellow-500">
         <nav className=" max-w-6xl mx-auto flex justify-between items-center h-[90px]">
             <div className=" border-b border-b-blue-600">
                 <Link to={'/'}>
