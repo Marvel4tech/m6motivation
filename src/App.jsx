@@ -11,7 +11,7 @@ import Signup from "./components/pages/Signup"
 function App() {
 
   return (
-    <main className=" overflow-x-hidden">
+    <div className=" overflow-x-hidden">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -21,7 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
-    </main>
+    </div>
   )
 }
 
