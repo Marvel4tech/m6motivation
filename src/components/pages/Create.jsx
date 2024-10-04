@@ -82,11 +82,11 @@ const Create = () => {
                   modules={modules}
                   placeholder=" content"
                 />
-                <div className=" bg-red-600 flex flex-col font-medium">
+                <div className=" border-[1.5px] border-gray-300 flex flex-col font-medium p-4">
                   {categories.map((category) =>(
-                    <label key={category}>
+                    <label className=" text-sm py-2" key={category}>
                       <input 
-                        type="checkbox"
+                        type="radio"
                         checked={selectedCategories.includes(category)}
                         onChange={() => handleCheckBoxChange(category)}
                       />
