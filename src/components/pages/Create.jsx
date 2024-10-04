@@ -5,6 +5,7 @@ import 'react-quill/dist/quill.snow.css';
 
 const Create = () => {
   const [selectedCategories, setSelectedCategories] = useState([])
+  const [imagePreview, setImagePreview] = useState()
 
   // Categories
   const categories = ['TRENDING', 'REVIEWS', 'LEAKS']
@@ -15,6 +16,11 @@ const Create = () => {
           ? prev.filter((c) => c !== category)
           : [...prev, category]
       );
+  }
+
+  // Image Preview
+  const handleImagePreview = () => {
+    
   }
 
   // Custom details for React Quills Text Editor - font, size, color, bg-color, and align options
@@ -94,6 +100,19 @@ const Create = () => {
                     </label>
                   ))} 
                 </div>
+                <div className=" bg-red-500">
+                    <img 
+                      src={imagePreview} 
+                      alt="Preview"
+                      className=" max-h-[300px] w-[100%] object-cover"
+                    />
+                </div>
+                <input 
+                  type="file"
+                  accept="image/"
+                  onChange={handleImageChange}
+                  required
+                />
             </form>
         </div>
     </div>
