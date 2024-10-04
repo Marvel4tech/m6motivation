@@ -1,8 +1,21 @@
+import { useState } from "react";
 import ReactQuill from "react-quill"
 import 'react-quill/dist/quill.snow.css';
 
 
 const Create = () => {
+  const [selectedCategories, setSelectedCategories] = useState([])
+
+  // Categories
+  const categories = ['TRENDING', 'REVIEWS', 'LEAKS']
+
+  const handleCheckBoxChange = (category) => {
+      setSelectedCategories((prev) => 
+        prev.includes(category)
+          ? prev.filter((c) => c !== category)
+          : [...prev, category]
+      );
+  }
 
   // Custom details for React Quills Text Editor - font, size, color, bg-color, and align options
   const sizeOptions = [
@@ -60,13 +73,27 @@ const Create = () => {
         <div className=" max-w-6xl mx-auto">
             <form>
                 <input
+                  className=" border-[1.5px] border-gray-300 w-full py-3 px-4"
                   type="text"
                   placeholder=" title"
                 />
                 <ReactQuill
                   theme="snow"
                   modules={modules}
+                  placeholder=" content"
                 />
+                <div className=" bg-red-600 flex flex-col font-medium">
+                  {categories.map((category) =>(
+                    <label key={category}>
+                      <input 
+                        type="checkbox"
+                        checked={selectedCategories.includes(category)}
+                        onChange={() => handleCheckBoxChange(category)}
+                      />
+                      {category.charAt(0).toUpperCase() + category.slice(1)}
+                    </label>
+                  ))} 
+                </div>
             </form>
         </div>
     </div>
