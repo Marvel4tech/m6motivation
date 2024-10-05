@@ -13,15 +13,15 @@ const useStore = create((set) => ({
             set({ posts })
             toast.success('Posts fetched successfully')
         } catch (error) {
-            toast.error('Error')
+            toast.error('Error fetching posts')
         }
     },
-    createPosts: async ( title, content, category, imagePath ) => {
+    createPosts: async ( title, content, categories, imagePath ) => {
         try {
             const date = new Date().toISOString()
-            await addDoc(collection(db, 'blogPosts'), { title, content, category, date, imagePath })
+            await addDoc(collection(db, 'blogPosts'), { title, content, categories, date, imagePath })
             set((state) => ({
-                posts: [...state.posts, { title, content, category, date, imagePath }]
+                posts: [...state.posts, { title, content, categories, date, imagePath }]
             }))
             toast.success('Posts created successfully')
         } catch (error) {
@@ -29,9 +29,14 @@ const useStore = create((set) => ({
         }
     },
     uploadImage: async (file) => {
-        const storageRef = ref(storage, `images/${file.name}`)
-        await uploadBytes(storageRef, file)
-        return storageRef.fullPath;
+        try {
+            const storageRef = ref(storage, `images/${file.name}`)
+            await uploadBytes(storageRef, file)
+            toast.success('Image upload successful')
+            return storageRef.fullPath;
+        } catch (error) {
+            toast.error('Image upload failed')
+        }
     },
 }));
 

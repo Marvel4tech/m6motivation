@@ -1,11 +1,15 @@
 import { useState } from "react";
 import ReactQuill from "react-quill"
 import 'react-quill/dist/quill.snow.css';
+import useStore from "../../store";
 
 const Create = () => {
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState('')
   const [selectedCategories, setSelectedCategories] = useState([])
   const [image, setImage] = useState(null)
   const [imagePreview, setImagePreview] = useState(null)
+  const { createPosts, uploadImage } = useStore()
 
   // Categories
   const categories = ['TRENDING', 'REVIEWS', 'LEAKS']
@@ -93,11 +97,15 @@ const Create = () => {
                   className=" border-[1.5px] border-gray-300 w-full py-3 px-4"
                   type="text"
                   placeholder=" title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                 />
                 <ReactQuill
                   theme="snow"
                   modules={modules}
                   placeholder=" content"
+                  value={content}
+                  onChange={(e) => setContent(e.targer.value)}
                 />
                 <div className=" border-[1.5px] border-gray-300 flex flex-col font-medium p-4">
                   {categories.map((category) =>(
