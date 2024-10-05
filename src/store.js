@@ -10,9 +10,13 @@ const useStore = create((set) => ({
         const posts = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
         set({ posts })
     },
-    createPosts: async ( title, content,  ) => {
+    createPosts: async ( title, content, category, imagePath ) => {
         const date = new Date().toISOString()
-    }
+        await addDoc(collection(db, 'blogPosts'), { title, content, category, date, imagePath })
+        set((state) => ({
+            posts: [...state.posts, { title, content, category, date, imagePath }]
+        }))
+    },
 }));
 
 export default useStore;

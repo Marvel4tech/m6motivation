@@ -6,12 +6,14 @@ import Feedback from "./components/pages/Feedback"
 import Login from "./components/pages/Login"
 import Header from "./components/header/Header"
 import Signup from "./components/pages/Signup"
+import { ToastContainer } from "react-toastify"
 
 
 function App() {
 
   return (
     <div className=" overflow-x-hidden">
+        <ToastContainer />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
