@@ -1,6 +1,7 @@
 import { useState } from "react";
-import ReactQuill from "react-quill"
+import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
+import { toast } from "react-toastify";
 import useStore from "../../store";
 
 const Create = () => {
@@ -9,7 +10,8 @@ const Create = () => {
   const [selectedCategories, setSelectedCategories] = useState([])
   const [image, setImage] = useState(null)
   const [imagePreview, setImagePreview] = useState(null)
-  const { createPosts, uploadImage } = useStore()
+  const { uploadImage, createPosts } = useStore()
+  
 
   // Categories
   const categories = ['TRENDING', 'REVIEWS', 'LEAKS']
@@ -38,6 +40,24 @@ const Create = () => {
       }
   };
 
+  // Handle Submit (Post Creation)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (image) {
+        const imagePath = await uploadImage(image);
+        await createPosts(title, content, selectedCategories, imagePath);
+        setTitle('')
+        setContent('')
+        setSelectedCategories([])
+        setImage(null)
+        toast.success('Post created successfully')
+      }
+    } catch (error) {
+        toast.error('Error submitting post')
+    }
+  }
+
   // Custom details for React Quills Text Editor - font, size, color, bg-color, and align options
   const sizeOptions = [
     { label: 'Small', value: 'small' },
@@ -48,6 +68,7 @@ const Create = () => {
 
   const colorOptions = [
     { label: 'Red', value: 'red' },
+    { label: 'White', value: 'white' },
     { label: 'Green', value: 'green' },
     { label: 'Blue', value: 'blue' },
     { label: 'Yellow', value: 'yellow' },
@@ -92,7 +113,7 @@ const Create = () => {
   return (
     <div className=' px-4 md:px-5 my-8'>
         <div className=" max-w-6xl mx-auto">
-            <form className=" space-y-6">
+            <form onSubmit={handleSubmit} className=" space-y-6">
                 <input
                   className=" border-[1.5px] border-gray-300 w-full py-3 px-4"
                   type="text"
@@ -103,12 +124,12 @@ const Create = () => {
                 <ReactQuill
                   theme="snow"
                   modules={modules}
-                  placeholder=" content"
+                  placeholder="Write your post here..."
                   value={content}
-                  onChange={(e) => setContent(e.targer.value)}
+                  onChange={setContent}
                 />
                 <div className=" border-[1.5px] border-gray-300 flex flex-col font-medium p-4">
-                  {categories.map((category) =>(
+                  {categories.map((category) => (
                     <label className=" text-sm py-2" key={category}>
                       <input 
                         type="checkbox"
@@ -146,4 +167,4 @@ const Create = () => {
   )
 }
 
-export default Create
+export default Create;
