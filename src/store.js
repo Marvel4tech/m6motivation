@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { db, auth, storage } from "./firebase";
 import { collection, addDoc, getDocs } from "firebase/firestore";
-import { uploadBytes, ref } from "firebase/storage";
+import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { toast } from "react-toastify";
 
 const useStore = create((set) => ({
@@ -9,11 +9,17 @@ const useStore = create((set) => ({
     fetchPosts: async () => {
         try {
             const querySnapshot = await getDocs(collection(db, 'blogPosts'))
-            const posts = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-            set({ posts })
-            toast.success('Posts fetched successfully')
+            const posts = await Promise.all(
+                querySnapshot.docs.map( async (doc) => {
+                    const data = doc.data()
+                    const imageUrl = await getDownloadURL(ref(storage, data.imagePath))
+                    return { id: doc.id, ...data, imageUrl }
+                })
+            );
+            set({ posts });
+            console.log('post and image fetch successfully')
         } catch (error) {
-            toast.error('Error fetching posts')
+            console.log('Error fetching posts')
         }
     },
     createPosts: async ( title, content, categories, imagePath ) => {

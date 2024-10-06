@@ -11,15 +11,22 @@ const Home = () => {
     fetchPosts();
   }, [fetchPosts]);
 
+  // Filter posts by category
+  const trendingPosts = posts.filter((post) => post.categories.includes('TRENDING'));
+  const reviewPosts = posts.filter((post) => post.categories.includes('REVIEWS'));
+  
+  // Get all posts
+  const latestPosts = posts;
+
   return (
     <div className=' px-4 md:px-5 mt-8'>
         <div className=' max-w-6xl mx-auto flex flex-col-reverse md:flex-col gap-10'>
             <div className=' flex flex-col md:flex-row gap-5'>
-                <Trending />
-                <Reviews />
+                <Trending posts={trendingPosts} />
+                <Reviews posts={reviewPosts} />
             </div>
             <div>
-                <LatestPosts />
+                <LatestPosts posts={latestPosts} />
             </div>
         </div>
     </div>
