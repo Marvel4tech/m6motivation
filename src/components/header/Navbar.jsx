@@ -5,7 +5,7 @@ import { MdMenu } from "react-icons/md"
 const Navbar = () => {
 
   return (
-    <header className=" px-4 md:px-5 border-b border-b-yellow-500">
+    <header className=" px-4 md:px-5 border-b border-b-yellow-500 fixed top-0 left-0 z-10 w-full bg-white ">
         <nav className=" max-w-6xl mx-auto flex justify-between items-center h-[90px]">
             <div className=" border-b border-b-blue-600">
                 <Link to={'/'}>

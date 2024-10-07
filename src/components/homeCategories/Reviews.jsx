@@ -1,12 +1,23 @@
 import React from 'react'
 
-const Reviews = () => {
+const Reviews = ({ posts }) => {
   return (
     <div className=' flex-[1]'>
         <div className=' '>
             <h2 className=' border-b border-b-blue-500'>
                 <span className=' w-fit bg-blue-500 text-white px-6 py-2 font-bold'>REVIEWS</span>
             </h2>
+            <ul className=' mt-5'>
+                {posts.map((post) => (
+                    <li key={post.id}>
+                        <img 
+                          src={post.imageUrl} 
+                          alt="post.title" 
+                        />
+                        <h3>{post.title}</h3>
+                    </li>
+                ))}
+            </ul>
         </div>
     </div>
   )
