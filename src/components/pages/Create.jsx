@@ -14,7 +14,7 @@ const Create = () => {
   
 
   // Categories
-  const categories = ['TRENDING', 'REVIEWS', 'LEAKS']
+  const categories = ['TRENDING', 'REVIEWS', 'LEAKS', 'COMPARISONS']
 
   const handleCheckBoxChange = (category) => {
       setSelectedCategories((prev) => 

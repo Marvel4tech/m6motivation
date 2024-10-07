@@ -15,6 +15,7 @@ const Home = () => {
   // Filter posts by category
   const trendingPosts = posts.filter((post) => post.categories.includes('TRENDING'));
   const reviewPosts = posts.filter((post) => post.categories.includes('REVIEWS'));
+  const comparisonsPosts = posts.filter((post) => post.categories.includes('COMPARISONS'));
   
   // Get all posts
   const latestPosts = posts;
@@ -26,9 +27,9 @@ const Home = () => {
                 <Trending posts={trendingPosts} />
                 <Reviews posts={reviewPosts} />
             </div>
-            <div className=' flex flex-col md:flex-row gap-8'>
+            <div className=' flex flex-col lg:flex-row gap-8'>
                 <LatestPosts posts={latestPosts} />
-                <Comparisons />
+                <Comparisons posts={comparisonsPosts} />
             </div>
         </div>
     </div>
