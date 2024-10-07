@@ -3,6 +3,7 @@ import Trending from '../homeCategories/Trending'
 import Reviews from '../homeCategories/Reviews'
 import LatestPosts from '../homeCategories/LatestPosts'
 import useStore from '../../store'
+import Comparisons from '../homeCategories/Comparisons'
 
 const Home = () => {
   const { posts, fetchPosts } = useStore()
@@ -25,8 +26,9 @@ const Home = () => {
                 <Trending posts={trendingPosts} />
                 <Reviews posts={reviewPosts} />
             </div>
-            <div>
+            <div className=' flex flex-col md:flex-row gap-8'>
                 <LatestPosts posts={latestPosts} />
+                <Comparisons />
             </div>
         </div>
     </div>
