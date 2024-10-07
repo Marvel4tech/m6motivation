@@ -25,9 +25,9 @@ const useStore = create((set) => ({
     createPosts: async ( title, content, categories, imagePath ) => {
         try {
             const date = new Date().toISOString()
-            await addDoc(collection(db, 'blogPosts'), { title, content, categories, date, imagePath })
+            await addDoc(collection(db, 'blogPosts'), { title, content, categories, date: formattedDate, imagePath })
             set((state) => ({
-                posts: [...state.posts, { title, content, categories, date, imagePath }]
+                posts: [...state.posts, { title, content, categories, date: formattedDate, imagePath }]
             }))
             toast.success('Posts created successfully')
         } catch (error) {
