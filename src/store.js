@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { db, auth, storage } from "./firebase";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, orderBy, query } from "firebase/firestore";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { toast } from "react-toastify";
 
@@ -8,11 +8,12 @@ const useStore = create((set) => ({
     posts: [],
     fetchPosts: async () => {
         try {
-            const querySnapshot = await getDocs(collection(db, 'blogPosts'))
+            const postQuery = query(collection(db, 'blogPosts'), orderBy('date', 'desc'));
+            const querySnapshot = await getDocs(postQuery)
             const posts = await Promise.all(
                 querySnapshot.docs.map( async (doc) => {
                     const data = doc.data()
-                    const imageUrl = await getDownloadURL(ref(storage, data.imagePath))
+                    const imageUrl = await getDownloadURL(ref(storage, data.imagePath));
                     return { id: doc.id, ...data, imageUrl }
                 })
             );

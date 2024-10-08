@@ -3,6 +3,7 @@ import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import { toast } from "react-toastify";
 import useStore from "../../store";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
   const [title, setTitle] = useState('')
@@ -11,6 +12,8 @@ const Create = () => {
   const [image, setImage] = useState(null)
   const [imagePreview, setImagePreview] = useState(null)
   const { uploadImage, createPosts } = useStore()
+
+  const navigate = useNavigate()
   
 
   // Categories
@@ -51,10 +54,11 @@ const Create = () => {
         setContent('')
         setSelectedCategories([])
         setImage(null)
-        toast.success('Post created successfully')
+        navigate('/', { replace: true });
+        console.log('Post created successfully')
       }
     } catch (error) {
-        toast.error('Error submitting post')
+        console.log('Error submitting post')
     }
   }
 
