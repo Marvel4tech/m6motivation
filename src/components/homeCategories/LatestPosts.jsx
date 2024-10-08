@@ -24,7 +24,7 @@ const LatestPosts = ({ posts }) => {
                           className=' h-20 md:h-40 object-cover w-32 md:w-full mb-2'
                         />
                         <div className=' flex-1'>
-                          <h3 className=' font-semibold text-lg leading-6 mb-1'>{post.title}</h3>
+                          <h3 className=' font-semibold text-lg leading-5 mb-1'>{post.title}</h3>
                           <p className=' text-[11px] text-gray-500 mb-3'>{formattedDate}</p>
                           <p className=' hidden md:block text-sm text-gray-500'
                             dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(

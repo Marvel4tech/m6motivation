@@ -25,7 +25,7 @@ const Trending = ({ posts }) => {
                         className=' h-16 object-cover w-16 rounded-full mb-2'
                       />
                       <div className=''>
-                        <h3 className=' font-semibold text-lg md:text-base leading-6 mb-1'>{post.title}</h3>
+                        <h3 className=' font-semibold text-lg md:text-base leading-5 mb-1'>{post.title}</h3>
                         <p className=' text-[11px] text-gray-500 mb-3'>{formattedDate}</p>
                         <p className=' block text-sm text-gray-500 md:hidden'
                           dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(
