@@ -111,7 +111,7 @@ const Create = () => {
   };
 
   return (
-    <div className=' px-4 md:px-5 my-8'>
+    <div className=' px-4 md:px-5 mt-32 mb-8'>
         <div className=" max-w-6xl mx-auto">
             <form onSubmit={handleSubmit} className=" space-y-6">
                 <input

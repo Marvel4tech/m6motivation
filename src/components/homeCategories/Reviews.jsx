@@ -12,9 +12,10 @@ const Reviews = ({ posts }) => {
                     <li key={post.id}>
                         <img 
                           src={post.imageUrl} 
-                          alt="post.title" 
+                          alt="post.title"
+                          className=' h-40 w-full object-cover'
                         />
-                        <h3>{post.title}</h3>
+                        <h3 className=' font-semibold text-lg'>{post.title}</h3>
                     </li>
                 ))}
             </ul>

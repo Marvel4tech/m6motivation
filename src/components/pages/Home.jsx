@@ -21,7 +21,7 @@ const Home = () => {
   const latestPosts = posts;
 
   return (
-    <div className=' px-4 md:px-5 mt-[125px]'>
+    <div className=' px-4 md:px-5 mt-32'>
         <div className=' max-w-6xl mx-auto flex flex-col-reverse md:flex-col gap-10'>
             <div className=' flex flex-col md:flex-row gap-8'>
                 <Trending posts={trendingPosts} />
