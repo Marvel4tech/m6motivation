@@ -21,7 +21,7 @@ const Reviews = ({ posts }) => {
                     </li>
                 ))}
             </ul>
-            <button className=' bg-gray-500 hover:bg-gray-600 w-full text-white py-2 rounded-md mt-5'>
+            <button className=' bg-gray-500 hover:bg-gray-600 w-full text-white py-2 rounded-sm mt-5'>
                 More Reviews
             </button>
         </div>

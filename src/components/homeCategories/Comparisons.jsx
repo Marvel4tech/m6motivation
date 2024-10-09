@@ -20,7 +20,7 @@ const Comparisons = ({ posts }) => {
                     </li>
                 ))}
             </ul>
-            <button className=' md:hidden bg-gray-500 hover:bg-gray-600 w-full text-white py-2 rounded-md mt-5'>
+            <button className=' md:hidden bg-gray-500 hover:bg-gray-600 w-full text-white py-2 rounded-sm mt-5'>
               More Comparisons
             </button>
         </div>
