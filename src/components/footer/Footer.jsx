@@ -1,4 +1,5 @@
 import React from 'react'
+import { FcIdea } from 'react-icons/fc'
 
 const Footer = () => {
   return (
@@ -8,6 +9,11 @@ const Footer = () => {
                 <div className=" flex flex-col items-center ">
                     <FcIdea className=" text-4xl " />
                     <h2 className=" font-mono font-bold">m6motivation</h2>
+                </div>
+                <div>
+                    <p>
+                        TechArena24 brings you the best of tech from around the globe!
+                    </p>
                 </div>
             </div>
             <div>
