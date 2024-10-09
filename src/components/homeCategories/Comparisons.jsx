@@ -5,11 +5,11 @@ const Comparisons = ({ posts }) => {
   return (
     <div className=' flex-1'>
         <div>
-            <h2 className=' bg-gray-800 text-white font-bold px-6 py-2 w-fit'>
-                COMPARISONS
+            <h2 className='border-b border-b-gray-800'>
+                <span className=' bg-gray-800 text-white font-bold px-6 py-2 w-fit'>COMPARISONS</span>
             </h2>
             <ul className=' mt-5 space-y-6'>
-                {posts.map((post) => (
+                {posts.slice(0, 4).map((post) => (
                     <li key={post.id}>
                         <img 
                             src={post.imageUrl} 
@@ -20,7 +20,7 @@ const Comparisons = ({ posts }) => {
                     </li>
                 ))}
             </ul>
-            <button className=' bg-gray-500 hover:bg-gray-600 w-full text-white py-2 rounded-md mt-5'>
+            <button className=' md:hidden bg-gray-500 hover:bg-gray-600 w-full text-white py-2 rounded-md mt-5'>
               More Comparisons
             </button>
         </div>
