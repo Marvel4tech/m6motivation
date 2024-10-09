@@ -3,15 +3,14 @@ import React from 'react'
 const NewslatterForm = () => {
   return (
     <div>
-        <form>
-            <label htmlFor="">
-                Subscribe to our newsletter:
-            </label>
+        <h5 className=' font-bold'>Subscribe to our newsletter:</h5>
+        <form className=' flex bg-red-500 py-1 px-1 w-full rounded-sm'>
             <input 
                 type="text"
-                className=''
+                className=' border w-[60%] py-2 px-2 rounded-sm text-black outline-none'
+                placeholder=' Enter your email'
             />
-            <button>
+            <button className=' w-[40%] text-white' type='submit'>
                 Subscribe
             </button>
         </form>
