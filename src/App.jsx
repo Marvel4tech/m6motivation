@@ -7,6 +7,7 @@ import Login from "./components/pages/Login"
 import Header from "./components/header/Header"
 import Signup from "./components/pages/Signup"
 import { ToastContainer } from "react-toastify"
+import Footer from "./components/footer/Footer"
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
+        <Footer />
     </div>
   )
 }
