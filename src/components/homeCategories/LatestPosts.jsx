@@ -9,7 +9,7 @@ const LatestPosts = ({ posts }) => {
               LATEST POSTS
           </h2>
           <ul className=' grid md:grid-cols-2 gap-5 md:gap-8 mt-5'>
-              {posts.map((post) => {
+              {posts.slice(0, 10).map((post) => {
                   const date = new Date(post.date)
                   const day = date.getDate()
                   const month = date.toLocaleString('default', { month: 'short' })
@@ -36,6 +36,9 @@ const LatestPosts = ({ posts }) => {
                   )
               })}
           </ul>
+          <button className=' bg-gray-500 hover:bg-gray-600 w-full text-white py-2 rounded-md mt-5'>
+              More Posts
+          </button>
         </div>
     </div>
   )

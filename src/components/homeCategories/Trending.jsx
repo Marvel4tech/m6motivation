@@ -10,7 +10,7 @@ const Trending = ({ posts }) => {
                 <span className=' w-fit bg-red-500 text-white px-6 py-2 font-bold'>TRENDING</span>
             </h2>
             <ul className=' grid md:grid-cols-2 gap-5 mt-5'>
-                {posts.map((post) => {
+                {posts.slice(0, 6).map((post) => {
                   const date = new Date(post.date);
                   const month = date.toLocaleString('default', { month: 'short' });
                   const day = date.getDate();
