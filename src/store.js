@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { db, auth, storage } from "./firebase";
-import { collection, addDoc, getDocs, orderBy, query, getDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, orderBy, query, getDoc, doc } from "firebase/firestore";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { toast } from "react-toastify";
 
@@ -46,11 +46,18 @@ const useStore = create((set) => ({
             toast.error('Image upload failed')
         }
     },
-    selectedPost: async (postId) => {
+    fetchSinglePostById: async (id) => {
         try {
-            const postDoc = await getDoc
+            const docRef = doc(db, 'blogPosts', id)
+            const docSnap = await getDoc(docRef)
+            if (docSnap.exists()) {
+                const data = docSnap.data()
+                const imageUrl = await getDownloadURL(ref(storage, data.imagePath))
+                set({ selectedPost: {id, ...data, imageUrl } })
+            }
+            toast.success('Post fetch successfully')
         } catch (error) {
-            
+            toast.error('failed to fetch')
         }
     }
 }));
