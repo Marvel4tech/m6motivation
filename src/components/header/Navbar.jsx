@@ -11,7 +11,7 @@ const Navbar = () => {
                 <Link to={'/'}>
                     <div className=" flex flex-col items-center ">
                         <FcIdea className=" text-4xl " />
-                        <h2 className=" font-mono font-bold">m6motivation</h2>
+                        <h2 className=" font-mono font-bold">techIdea</h2>
                     </div>
                 </Link>
             </div>

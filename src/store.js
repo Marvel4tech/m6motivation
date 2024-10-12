@@ -1,11 +1,12 @@
 import { create } from "zustand";
 import { db, auth, storage } from "./firebase";
-import { collection, addDoc, getDocs, orderBy, query } from "firebase/firestore";
+import { collection, addDoc, getDocs, orderBy, query, getDoc } from "firebase/firestore";
 import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import { toast } from "react-toastify";
 
 const useStore = create((set) => ({
     posts: [],
+    selectedPost: null,
     fetchPosts: async () => {
         try {
             const postQuery = query(collection(db, 'blogPosts'), orderBy('date', 'desc'));
@@ -45,6 +46,13 @@ const useStore = create((set) => ({
             toast.error('Image upload failed')
         }
     },
+    selectedPost: async (postId) => {
+        try {
+            const postDoc = await getDoc
+        } catch (error) {
+            
+        }
+    }
 }));
 
 export default useStore;

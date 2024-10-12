@@ -11,7 +11,7 @@ const Footer = () => {
                 <div className=' px-5'>
                     <div className=" flex flex-col items-center mb-10">
                         <FcIdea className=" text-4xl " />
-                        <h2 className=" font-mono font-bold">m6motivation</h2>
+                        <h2 className=" font-mono font-bold">techIdea</h2>
                     </div>
                     <div>
                         <p>
