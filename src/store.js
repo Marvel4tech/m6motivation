@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const useStore = create((set) => ({
     posts: [],
-    selectedPost: null,
+    singlePost: null,
     fetchPosts: async () => {
         try {
             const postQuery = query(collection(db, 'blogPosts'), orderBy('date', 'desc'));
@@ -46,18 +46,19 @@ const useStore = create((set) => ({
             toast.error('Image upload failed')
         }
     },
-    fetchSinglePostById: async (id) => {
+    fetchSinglePost: async (postId) => {
         try {
-            const docRef = doc(db, 'blogPosts', id)
+            const docRef = doc(db, 'blogPosts', postId)
             const docSnap = await getDoc(docRef)
-            if (docSnap.exists()) {
+            if(docSnap.exists()) {
                 const data = docSnap.data()
                 const imageUrl = await getDownloadURL(ref(storage, data.imagePath))
-                set({ selectedPost: {id, ...data, imageUrl } })
+                set({ singlePost: { id: docSnap.id, ...data, imageUrl } })
+                toast.success('Post fetch successfully')
             }
-            toast.success('Post fetch successfully')
         } catch (error) {
-            toast.error('failed to fetch')
+            set({ singlePost: null })
+            toast.error('Error fetching post')
         }
     }
 }));
